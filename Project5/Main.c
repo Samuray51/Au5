@@ -179,7 +179,7 @@ void PrintSneg(int x1,int y1, int x2, int y2, int x3, int y3, int x4, int y4, in
 
 int main()
 {
-	srand((unsigned int)time(0));
+	/*srand((unsigned int)time(0));
 	setconsolesize(60, 20);
 	int x1 = 35, y1 = 8, x2 = 25, y2 = 15, x3 = 15, y3 = 7, x4 = 55, y4 = 5, x5 = 50, y5 = 10;
 	while (1)
@@ -200,6 +200,52 @@ int main()
 		y5 = GoY(y5);
 		Sleep(300);
 		PrintSneg(x1, y1, x2, y2, x3, y3, x4, y4, x5, y5);
+	}*/
+
+
+
+
+
+	int n = 15000;
+	int g, j, i;
+	int* mas = (int*)malloc(n * sizeof(int));
+	int* mas1 = (int*)malloc(n * sizeof(int));
+	int* mas2 = (int*)malloc(n * sizeof(int));
+	for (i = 0; i < n; i++) 
+	{
+		mas[i] = i;
+	}
+	mas[1] = 0;
+
+	for (g = 2; g < n; g++) 
+	{
+		if (mas[g] != 0) 
+		{
+			for (j = g * 2; j < n; j += g) 
+			{
+				mas[j] = 0;
+			}
+		}
+	}
+	int z = 0;
+	for (i = 0; i < n; i++) 
+	{
+		if (mas[i] != 0)
+		{
+			mas1[z] = mas[i];
+			z++;
+		}
+	}
+	int k;
+	scanf_s("%d", &k);
+	for (i = 0; i < k; i++) 
+	{
+		scanf_s("%d", &mas2[i]);
+	}
+
+	for (i = 0; i < k; i++) 
+	{
+		printf("%d\n", mas1[mas2[i] - 1]);
 	}
 	system("pause");
 	return 0;
